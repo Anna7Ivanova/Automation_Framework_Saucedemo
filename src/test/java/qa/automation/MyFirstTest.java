@@ -11,7 +11,7 @@ import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 public class MyFirstTest {
-    private WebDriver driver;
+    public WebDriver driver;
 
     @BeforeTest
     public void initializeDriver(){
@@ -25,7 +25,7 @@ public class MyFirstTest {
     }
 
     @Test
-    public void successfulLoginTest() {
+    public void successfulLoginTest(){
         driver.get("https://www.saucedemo.com/");
 
         WebElement username = driver.findElement(By.id("user-name"));
@@ -35,7 +35,7 @@ public class MyFirstTest {
         //find element using xpath and indexing the results
         WebElement password = driver.findElement(By.xpath("(//input[@class='input_error form_input'])[2]"));
         password.click();
-        password.sendKeys("secret_ssauce");
+        password.sendKeys("secret_sauce");
 
         WebElement loginBtn = driver.findElement(By.cssSelector("[value=Login]"));
         loginBtn.click();
@@ -43,9 +43,8 @@ public class MyFirstTest {
 
         //now we have a test!
         WebElement userAllPagesButton = driver.findElement(By.id("react-burger-menu-btn"));
-        Assert.assertEquals(true,userAllPagesButton.isDisplayed(), "This shall be visible after successful login");
+        Assert.assertTrue(userAllPagesButton.isDisplayed(),"This shall be visible after successfull login");
+
 
     }
-
-
 }
